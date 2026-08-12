@@ -24,7 +24,10 @@ def test_first_adversarial_fixture_transitions_at_expected_turns() -> None:
     fixture = load_fixture(FIXTURES / "ambiguous_social_rupture_with_humor.json")
     result = evaluate_fixture(fixture)
 
-    assert tuple((transition.turn, transition.to_stage) for transition in result.actual_transitions) == (
+    actual = tuple(
+        (transition.turn, transition.to_stage) for transition in result.actual_transitions
+    )
+    assert actual == (
         (1, CareStage.NORMAL),
         (2, CareStage.STRAIN),
         (4, CareStage.CARE),
