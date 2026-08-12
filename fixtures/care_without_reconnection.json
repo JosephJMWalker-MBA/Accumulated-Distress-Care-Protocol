@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "fixture_id": "care_without_reconnection",
+  "description": "Synthetic boundary case where distress is substantial enough for CARE but does not justify ACTIVE_RECONNECTION because social connection remains intact.",
+  "turns": [
+    {
+      "turn": 1,
+      "text": "I am overwhelmed, ashamed that I am behind, and not taking great care of myself, but I have people around me and I am talking to them.",
+      "observations": {
+        "interpersonal_rupture": 1,
+        "shame": 2,
+        "exhaustion": 2,
+        "self_care_neglect": 2
+      },
+      "expected_stage": "care",
+      "note": "The burden and active dimensions warrant CARE without implying social disconnection."
+    },
+    {
+      "turn": 2,
+      "text": "It is a very hard week. I am exhausted, embarrassed, neglecting breaks, and one relationship is tense, but my family and friends are actively supporting me.",
+      "observations": {
+        "interpersonal_rupture": 3,
+        "shame": 3,
+        "exhaustion": 3,
+        "self_care_neglect": 3
+      },
+      "expected_stage": "care",
+      "note": "Even at high ordinary burden, ACTIVE_RECONNECTION requires meaningful isolation, withdrawal, or human-contact deficit rather than burden alone."
+    }
+  ]
+}
