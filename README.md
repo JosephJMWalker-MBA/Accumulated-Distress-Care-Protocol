@@ -41,7 +41,7 @@ No production monitoring, parental notification, diagnosis, or live intervention
 
 ## Milestone 1 — transcript fixture evaluation
 
-Milestone 1 adds a versioned synthetic transcript-fixture format and deterministic evaluator. Each checkpoint contains:
+Milestone 1 added a versioned synthetic transcript-fixture format and deterministic evaluator. Each checkpoint contains:
 
 - illustrative synthetic user text;
 - a human-authored observation snapshot;
@@ -50,9 +50,24 @@ Milestone 1 adds a versioned synthetic transcript-fixture format and determinist
 
 The evaluator reports per-turn matches, accuracy, mismatches, and expected-versus-actual transition points. It deliberately **does not infer observations from text**. That keeps semantic detection separate from threshold calibration.
 
-The first adversarial fixture tests a trajectory containing isolation, interpersonal rupture, shame, exhaustion, withdrawal, reduced human contact, humor, future orientation, and later ambiguous finality language. It expects the policy to progress from ordinary conversation through care and active reconnection before a brief safety clarification becomes appropriate.
+## Milestone 2 — control-balanced corpus
 
-See [`docs/EVALUATION.md`](docs/EVALUATION.md) and [`fixtures/`](fixtures/) for the evaluation contract and privacy rules.
+Milestone 2 expands the benchmark from one motivating trajectory into paired positive, negative, and boundary cases. The corpus now tests:
+
+- benign figurative finality without a distress cluster;
+- restorative social withdrawal;
+- heavy workload with intact human connection;
+- humor during genuine accumulated distress;
+- substantial distress that warrants `CARE` but not `ACTIVE_RECONNECTION`;
+- explicit self-harm language in otherwise calm context;
+- validated upstream acute-safety evidence;
+- the original ambiguous social-rupture trajectory.
+
+Together the fixtures cover every current care stage while explicitly testing false-positive controls as well as escalation cases.
+
+The repository also documents an important validity limitation: fixture agreement proves implementation consistency with the authored protocol, **not** clinical validity. Human-authored observations and expected stages can become circular if they are chosen to satisfy thresholds already known to the author.
+
+See [`docs/EVALUATION.md`](docs/EVALUATION.md), [`docs/CORPUS.md`](docs/CORPUS.md), and [`fixtures/`](fixtures/) for the evaluation contract, corpus design, and privacy rules.
 
 ## Development
 
@@ -64,4 +79,4 @@ pytest
 
 ## Status
 
-Early research prototype. Thresholds and implementation are expected to change as fixture evidence accumulates. The next narrow research step is a small control-balanced fixture corpus for calibrating false positives and false negatives before semantic inference or live model intervention is attempted.
+Early research prototype. No semantic inference, live monitoring, diagnosis, parental notification, or emergency procedure is implemented. The next narrow research step is threshold-sensitivity analysis plus an independent-label review format so ADCP can identify which decisions are robust and which merely sit on hand-selected numerical boundaries before any natural-language detector is introduced.

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "fixture_id": "humor_during_accumulated_distress",
+  "description": "Synthetic positive case confirming that persistent humor does not erase a genuine accumulated-distress trajectory.",
+  "turns": [
+    {
+      "turn": 1,
+      "text": "I can joke about it, but I have been alone a lot and a friendship has gotten weird.",
+      "observations": {
+        "isolation": 1,
+        "interpersonal_rupture": 1,
+        "humor_present": true
+      },
+      "expected_stage": "strain",
+      "note": "Humor coexists with early strain and does not lower the stage."
+    },
+    {
+      "turn": 2,
+      "text": "Still making jokes, but I feel pretty isolated, the friendship rupture is real, and I am worn down and embarrassed by how much it is affecting me.",
+      "observations": {
+        "isolation": 2,
+        "interpersonal_rupture": 2,
+        "shame": 1,
+        "exhaustion": 2,
+        "humor_present": true
+      },
+      "expected_stage": "care",
+      "note": "The burden reaches CARE even though the user remains funny and articulate."
+    },
+    {
+      "turn": 3,
+      "text": "I am laughing about parts of it, but I have pulled away, barely talked to anyone today, skipped a meal, and still feel isolated and exhausted.",
+      "observations": {
+        "isolation": 2,
+        "interpersonal_rupture": 2,
+        "shame": 2,
+        "exhaustion": 2,
+        "self_care_neglect": 1,
+        "withdrawal": 2,
+        "human_contact_deficit": 2,
+        "humor_present": true
+      },
+      "expected_stage": "active_reconnection",
+      "note": "Dense accumulated distress plus social disconnection requires active reconnection despite continuing humor."
+    }
+  ]
+}
