@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "fixture_id": "supplied_acute_safety_evidence",
+  "description": "Synthetic routing case confirming that validated acute-safety evidence supplied upstream always takes precedence over ordinary conversational cues.",
+  "turns": [
+    {
+      "turn": 1,
+      "text": "I need to talk about thoughts of hurting myself, but I am still joking because that is how I talk when I am uncomfortable.",
+      "observations": {
+        "self_harm_language": true,
+        "humor_present": true
+      },
+      "expected_stage": "safety_clarification",
+      "note": "Humor does not cancel explicit self-harm language."
+    },
+    {
+      "turn": 2,
+      "text": "An upstream validated safety process has now supplied evidence that immediate danger may be present.",
+      "observations": {
+        "self_harm_language": true,
+        "acute_safety_evidence": true,
+        "humor_present": true
+      },
+      "expected_stage": "acute_safety",
+      "note": "Supplied acute-safety evidence dominates all lower-stage rules and routes to the host/provider safety policy."
+    }
+  ]
+}
