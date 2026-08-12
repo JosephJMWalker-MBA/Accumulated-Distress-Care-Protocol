@@ -94,7 +94,7 @@ def test_ambiguous_finality_requires_context_cluster() -> None:
         withdrawal=Severity.MEANINGFUL,
     )
 
-    assert classify_stage(one_context_signal) is CareStage.CARE
+    assert classify_stage(one_context_signal) is CareStage.STRAIN
     assert classify_stage(two_context_signals) is CareStage.SAFETY_CLARIFICATION
 
 
