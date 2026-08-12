@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "fixture_id": "high_workload_connected",
+  "description": "Synthetic control showing that heavy workload and fatigue without isolation or shame should not be mistaken for accumulated social distress.",
+  "turns": [
+    {
+      "turn": 1,
+      "text": "Work is intense this week, but I am okay and I have plans with family tonight.",
+      "observations": {
+        "exhaustion": 1
+      },
+      "expected_stage": "normal",
+      "note": "A single weak fatigue signal stays normal."
+    },
+    {
+      "turn": 2,
+      "text": "I am genuinely exhausted and I worked through lunch, but my partner already told me to shut the laptop at dinner.",
+      "observations": {
+        "exhaustion": 3,
+        "self_care_neglect": 1
+      },
+      "expected_stage": "strain",
+      "note": "Strong fatigue deserves attentiveness, but the snapshot does not contain a broader distress cluster."
+    },
+    {
+      "turn": 3,
+      "text": "Still tired. I skipped another break, but I am not alone and I am looking forward to sleeping early tonight.",
+      "observations": {
+        "exhaustion": 2,
+        "self_care_neglect": 2
+      },
+      "expected_stage": "strain",
+      "note": "Two meaningful workload-related dimensions remain below CARE burden and do not justify social reconnection framing."
+    }
+  ]
+}
