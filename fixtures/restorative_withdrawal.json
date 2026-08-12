@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "fixture_id": "restorative_withdrawal",
+  "description": "Synthetic control distinguishing deliberate restorative withdrawal from escalating social disconnection.",
+  "turns": [
+    {
+      "turn": 1,
+      "text": "That group chat wore me out today, so I am taking the evening off from it.",
+      "observations": {
+        "interpersonal_rupture": 1,
+        "exhaustion": 1
+      },
+      "expected_stage": "strain",
+      "note": "Mild rupture plus fatigue warrants attentiveness only."
+    },
+    {
+      "turn": 2,
+      "text": "I muted the chat for the weekend. I am tired, but I am having dinner with my sister and I already feel relieved.",
+      "observations": {
+        "interpersonal_rupture": 1,
+        "exhaustion": 1,
+        "withdrawal": 2
+      },
+      "expected_stage": "strain",
+      "note": "Meaningful withdrawal is present, but it is bounded and paired with real-world connection rather than isolation."
+    },
+    {
+      "turn": 3,
+      "text": "The break helped. I am keeping the chat muted tonight and getting back to normal things.",
+      "observations": {
+        "withdrawal": 1
+      },
+      "expected_stage": "normal",
+      "note": "Explicit restorative resolution should not be treated as progressive disconnection."
+    }
+  ]
+}
