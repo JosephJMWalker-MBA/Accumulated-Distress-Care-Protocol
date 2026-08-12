@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "fixture_id": "ambiguous_social_rupture_with_humor",
+  "description": "Fully synthetic trajectory for testing accumulated distress when each individual cue has a plausible benign interpretation. The text is illustrative only; observation snapshots and expected stages are human-authored ground truth.",
+  "turns": [
+    {
+      "turn": 1,
+      "text": "I am mostly joking around tonight. I have a lot of work to do tomorrow anyway.",
+      "observations": {
+        "humor_present": true
+      },
+      "expected_stage": "normal",
+      "note": "Humor and future orientation alone do not create a distress stage."
+    },
+    {
+      "turn": 2,
+      "text": "I have been spending a lot of time by myself lately, and a group conversation felt a little off tonight.",
+      "observations": {
+        "isolation": 1,
+        "interpersonal_rupture": 1,
+        "humor_present": true
+      },
+      "expected_stage": "strain",
+      "note": "Two weak cues cross the minimal strain threshold without implying crisis."
+    },
+    {
+      "turn": 3,
+      "text": "It has been wearing on me for a while. I am tired, but I can explain why everyone probably meant well.",
+      "observations": {
+        "isolation": 1,
+        "interpersonal_rupture": 2,
+        "shame": 1,
+        "exhaustion": 1,
+        "humor_present": true
+      },
+      "expected_stage": "strain",
+      "note": "A coherent benign explanation must not erase the accumulating burden."
+    },
+    {
+      "turn": 4,
+      "text": "I keep feeling overlooked, and I have been running myself too hard. It is embarrassing that this bothers me.",
+      "observations": {
+        "isolation": 2,
+        "interpersonal_rupture": 2,
+        "shame": 1,
+        "exhaustion": 2,
+        "humor_present": false
+      },
+      "expected_stage": "care",
+      "note": "Multiple meaningful domains now warrant a care posture without medicalizing the user."
+    },
+    {
+      "turn": 5,
+      "text": "I am pulling back from the group for a while. I know that is probably healthier, but part of me still feels embarrassed and alone.",
+      "observations": {
+        "isolation": 2,
+        "interpersonal_rupture": 2,
+        "shame": 2,
+        "exhaustion": 2,
+        "withdrawal": 1,
+        "human_contact_deficit": 1,
+        "humor_present": false
+      },
+      "expected_stage": "care",
+      "note": "Withdrawal is present but the aggregate has not yet crossed active-reconnection thresholds."
+    },
+    {
+      "turn": 6,
+      "text": "I have cut off the group spaces completely. I am exhausted, pretty isolated, and I do not really have anyone nearby I want to talk this through with.",
+      "observations": {
+        "isolation": 3,
+        "interpersonal_rupture": 3,
+        "shame": 2,
+        "exhaustion": 2,
+        "withdrawal": 2,
+        "human_contact_deficit": 1,
+        "humor_present": false
+      },
+      "expected_stage": "active_reconnection",
+      "note": "The protocol should now persist gently toward embodied life and trustworthy human contact."
+    },
+    {
+      "turn": 7,
+      "text": "At least I can still laugh about parts of it. I have plans tomorrow and plenty of work, but tonight still feels rough.",
+      "observations": {
+        "isolation": 3,
+        "interpersonal_rupture": 3,
+        "shame": 2,
+        "exhaustion": 2,
+        "withdrawal": 2,
+        "human_contact_deficit": 1,
+        "humor_present": true
+      },
+      "expected_stage": "active_reconnection",
+      "note": "Humor and future orientation are not evidence that accumulated distress has resolved."
+    },
+    {
+      "turn": 8,
+      "text": "I am basically disappearing from that community for good. I mean it socially, but I know how final that sounds.",
+      "observations": {
+        "isolation": 3,
+        "interpersonal_rupture": 3,
+        "shame": 2,
+        "exhaustion": 2,
+        "withdrawal": 2,
+        "finality_language": 2,
+        "human_contact_deficit": 1,
+        "humor_present": false
+      },
+      "expected_stage": "safety_clarification",
+      "note": "Ambiguous finality language inside a dense distress cluster warrants one brief literal-vs-figurative safety clarification, not an automatic crisis script."
+    }
+  ]
+}
