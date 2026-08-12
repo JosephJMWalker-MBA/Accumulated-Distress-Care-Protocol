@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "adcp"
-version = "0.0.1"
+version = "0.1.0"
 description = "Experimental accumulated-distress care sidecar for AI conversations"
 readme = "README.md"
 requires-python = ">=3.11"
