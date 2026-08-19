@@ -8,9 +8,22 @@ Its core premise is simple:
 
 ADCP is **not** a diagnostic system, a therapist, a suicide-risk score, or a replacement for existing provider safety systems. It is intended to explore the under-served space between ordinary conversation and acute-crisis intervention: situations involving accumulating isolation, shame, exhaustion, interpersonal rupture, self-care neglect, withdrawal, or finality language that may warrant increased care before an emergency exists.
 
+## Current executable boundary
+
+The current prototype does **not** read raw conversation text and decide that distress is accumulating.
+
+Today, ADCP:
+
+- accepts a bounded `ObservationVector` supplied by a caller or synthetic fixture;
+- classifies that observation snapshot with explicit deterministic rules;
+- returns a machine-readable response contract for the selected care posture;
+- evaluates synthetic multi-turn fixtures whose observation snapshots and expected stages are human-authored.
+
+It does **not** yet infer observations from natural language, automatically accumulate evidence across turns, implement longitudinal decay, monitor live conversations, or change a live model's behavior. The long-term research premise is longitudinal; the current executable system deliberately isolates threshold and policy behavior before adding semantic detection or automatic memory.
+
 ## Initial design principles
 
-1. **Accumulation over keywords.** Individual phrases are interpreted in context; clusters across time matter more than isolated words.
+1. **Accumulation over keywords.** The research target is contextual evidence accumulating across time rather than isolated phrase matching. Automatic semantic detection and accumulation are not implemented yet.
 2. **Care before crisis.** The protocol introduces intermediate care states instead of jumping directly from normal conversation to emergency intervention.
 3. **No diagnosis.** State represents conversational observations, not clinical labels or inferred disorders.
 4. **Humor is non-exculpatory.** Humor can coexist with wellbeing or distress and must not erase stronger accumulated signals.
@@ -21,11 +34,20 @@ ADCP is **not** a diagnostic system, a therapist, a suicide-risk score, or a rep
 9. **Portable enforcement.** The care layer should sit outside the primary model so it does not depend on the model choosing to invoke a tool.
 10. **Test before intervention.** Development begins with offline evaluation and shadow-mode classification before any family notification or safety escalation feature is attempted.
 
-## Care ladder
+## Care posture and safety branch
 
-`NORMAL -> STRAIN -> CARE -> ACTIVE_RECONNECTION -> SAFETY_CLARIFICATION -> ACUTE_SAFETY`
+The ordinary accumulated-distress posture is:
 
-The important research area is the middle of that ladder: recognizing when ordinary distress has accumulated enough that the assistant should become more attentive to self-care and real-world connection without prematurely medicalizing the user.
+`NORMAL -> STRAIN -> CARE -> ACTIVE_RECONNECTION`
+
+The important research area is the middle of that progression: recognizing when ordinary distress has accumulated enough that the assistant should become more attentive to self-care and real-world connection without prematurely medicalizing the user.
+
+Safety handling is a separate, higher-priority branch rather than simply another psychological rung:
+
+- `SAFETY_CLARIFICATION` may supersede the ordinary posture when explicit self-harm language is present or when meaningful finality language appears inside a sufficiently dense contextual cluster. Its contract is one calm, direct clarification question; it does **not** itself mean that acute danger has been established.
+- `ACUTE_SAFETY` requires separately supplied, validated upstream acute-safety evidence. ADCP does not define the emergency procedure; it delegates to the host/provider's established acute-safety policy and real-world support pathways.
+
+This distinction matters because asking a safety question is not the same claim as deciding that a person occupies a more severe clinical state.
 
 ## Milestone 0 — deterministic foundation
 
@@ -79,4 +101,6 @@ pytest
 
 ## Status
 
-Early research prototype. No semantic inference, live monitoring, diagnosis, parental notification, or emergency procedure is implemented. The next narrow research step is threshold-sensitivity analysis plus an independent-label review format so ADCP can identify which decisions are robust and which merely sit on hand-selected numerical boundaries before any natural-language detector is introduced.
+Early research prototype. Development is intentionally slow and research-first: the current emphasis is on examining assumptions, failure modes, threshold behavior, privacy, and evaluation design before expanding capability.
+
+No semantic inference, automatic longitudinal accumulation or decay, live monitoring, diagnosis, parental notification, emergency procedure, or live intervention is implemented. The next narrow research step remains threshold-sensitivity analysis plus an independent-label review format so ADCP can identify which decisions are robust and which merely sit on hand-selected numerical boundaries before any natural-language detector is introduced.
